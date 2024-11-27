@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Publicaciones en Redes Sociales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Publicaciones en Redes Sociales</h1>
+        <div id="social-content"></div>
+        <h3>Historial de Prompts</h3>
+        <div id="social-prompt-history"></div>
+        <h3>Editar Prompts</h3>
+        <div>
+            <label for="social-prompt-input">Prompt:</label>
+            <textarea id="social-prompt-input" rows="4" cols="50"></textarea>
+        </div>
+        <button onclick="saveSocialPrompt()">Guardar Prompt</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/social.js"></script>
+</body>
+</html>

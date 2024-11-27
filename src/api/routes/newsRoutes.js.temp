@@ -1,0 +1,42 @@
+const express = require('express');
+const router = express.Router();
+const News = require('../../models/News');
+//const { body, validationResult } = require('express-validator'); // Removed validation middleware
+
+// Agregar una nueva noticia
+router.post('/news', async (req, res) => { // Removed validation middleware
+    try {
+        const newsData = {
+            title: req.body.title,
+            description: req.body.description,
+            content: req.body.content,
+            imageUrl: req.body.imageUrl || null,
+            url: req.body.url || null,
+            publishDate: req.body.publishDate || null
+        };
+
+        const newsId = await News.create(newsData);
+        if (newsId) {
+            res.status(201).json({
+                status: 'success',
+                message: 'Noticia creada correctamente',
+                id: newsId
+            });
+        } else {
+            res.status(400).json({
+                status: 'error',
+                message: 'Error al crear la noticia. Posible duplicado.'
+            });
+        }
+    } catch (error) {
+        console.error('Error al crear noticia:', error);
+        res.status(500).json({
+            status: 'error',
+            message: `Server Error: ${error.message}`
+        });
+    }
+});
+
+// ... (rest of the routes with improved error handling remain the same) ...
+
+module.exports = router;
